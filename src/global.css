@@ -1,0 +1,13 @@
+* {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+	padding-left: 12rem;
+	padding-right: 12rem;
+}
