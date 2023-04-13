@@ -2,16 +2,15 @@ header {
 	background-image: url("../../images/photo-1604964432806-254d07c11f32.png");
 	height: 100vh;
 	background-size: contain;
+	display: flex;
+	flex-direction: column;
 }
 
 .learn-more-header {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	color: white;
+	height: 100%;
+	display: flex;
 	justify-content: center;
-	padding-top: 39rem;
-	padding-bottom: 7rem;
 }
 
 .learn-more-text-container {
@@ -19,6 +18,8 @@ header {
 	flex-direction: column;
 	align-items: center;
 	cursor: pointer;
+	padding-bottom: 6rem;
+	margin-top: auto;
 }
 
 .learn-more-text {
@@ -131,7 +132,6 @@ header {
 .projects {
 	padding-top: 8rem;
 	padding-bottom: 8rem;
-	position: relative;
 }
 
 .projects-container {
@@ -139,8 +139,28 @@ header {
 	flex-direction: column;
 	align-items: center;
 	border-radius: 10px;
+	position: relative;	
+	justify-content: space-between;
+}
+
+.project {
 	position: relative;
-	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.project-data {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.img-dex, .project-data {
+	transition: all 1s linear;
 }
 
 .img-dex {
@@ -154,15 +174,17 @@ header {
 
 .projects .title {
 	padding-top: 4rem;
-	margin-bottom: 2rem;
+	margin-bottom: 4rem;
 	font-weight: 700;
 	font-size: 2rem;
 }
 
 .projects .name {
-	margin-bottom: 2rem;
+	padding-top: 4rem;
+	margin-bottom: 4rem;
 	font-weight: 500;
 	font-size: 1.2rem;
+	text-transform: capitalize;
 }
 
 .perfil-image {
@@ -173,17 +195,17 @@ header {
 
 .description {
 	text-align: center;
-	padding: 4rem 10rem 8rem;
+	padding: 4rem 16rem 8rem;
 	font-family: 'Inconsolata', monospace;
 	font-weight: 500;
 	font-size: 1.2rem;
+	margin-bottom: 4rem;
 }
 
 .input-container {
 	display: flex;
 	gap: .5rem;
-	
-	padding-bottom: 4rem;
+	padding-top: 2rem;
 }
 
 .radio {
@@ -214,11 +236,14 @@ header {
 }
 
 .skills-container {
+	padding: 0 5rem;
+}
+
+.skills-list {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 2rem;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
+	width: 100%;
 	opacity: 0;
 }
 

@@ -6,5 +6,5 @@ import { HomePage } from './pages/home/home';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <HomePage />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
