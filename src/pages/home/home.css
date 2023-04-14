@@ -1,7 +1,5 @@
-header {
-	background-image: url("../../images/photo-1604964432806-254d07c11f32.png");
+.header-home {
 	height: 100vh;
-	background-size: contain;
 	display: flex;
 	flex-direction: column;
 }
@@ -11,6 +9,8 @@ header {
 	height: 100%;
 	display: flex;
 	justify-content: center;
+	background-image: url("../../images/photo-1604964432806-254d07c11f32.png");
+	background-size: contain;
 }
 
 .learn-more-text-container {
@@ -160,7 +160,7 @@ header {
 }
 
 .img-dex, .project-data {
-	transition: all 1s linear;
+	transition: all .5s linear;
 }
 
 .img-dex {

@@ -1,0 +1,17 @@
+.about-container {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+.about-img img {
+	border-radius: 50%;
+	min-width: 180px;
+	max-width: 180px;
+	border: 2px solid #33C1FF;
+
+}
+
+.about-description {
+	width: 50%;
+	margin: 0 auto;
+}

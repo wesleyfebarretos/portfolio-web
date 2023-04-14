@@ -14,12 +14,12 @@ export function FooterComponent() {
       <div className="links-midia">
         <ul className="links-container">
           <li>
-            <a href="#" className="link">
+            <a href="/" className="link">
               home
             </a>
           </li>
           <li>
-            <a href="#" className="link">
+            <a href="/about" className="link">
               about
             </a>
           </li>

@@ -95,7 +95,7 @@ export function HomePage() {
 
   return (
     <>
-      <header className="">
+      <header className="header-home">
         <NavigationBarComponent />
         <div className="container learn-more-header">
           <div
@@ -161,10 +161,7 @@ export function HomePage() {
                 <p className="name">café</p>
                 <img className="perfil-image" src={gitImg} alt="" />
                 <p className="description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
-                  eius eveniet qui unde dicta voluptatibus consequatur magnam ex
-                  modi consectetur praesentium, voluptatum voluptatem ipsa
-                  aspernatur. Consequatur fugit totam doloremque nihil.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 </p>
               </div>
             </div>

@@ -1,12 +1,13 @@
 .nav-bar {
 	display: flex;
 	justify-content: space-between;
-	padding-top: 5rem;
-	padding-bottom: 1rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 	align-items: center;
 	text-transform: capitalize;
-	border-bottom: 1px solid rgba(51, 193, 255, .3);
+	border-bottom: 1px solid rgba(51, 193, 255, .5);
 	color: white;
+	background: gray;
 }
 
 .nav-items-container {
