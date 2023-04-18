@@ -1,3 +1,8 @@
+.about-main {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
 .about-container {
 	padding-top: 4rem;
 	padding-bottom: 4rem;
@@ -13,5 +18,76 @@
 
 .about-description {
 	width: 50%;
-	margin: 0 auto;
+	margin-left: 15%;
+}
+
+.about-description h1 {
+	margin-bottom: 2rem;
+}
+
+.contact {
+	display: flex;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+.social-midias-container, .get-in-touch-container {
+	padding: 0 6rem;
+	width: 50%;
+}
+
+.social-midias {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+}
+
+.social-midias-img-container {
+	display: flex;
+	margin: 4rem 0;
+	justify-content: center;
+	gap: 4rem;
+}
+
+.social-midias h2 {
+	padding-bottom: 2rem;
+}
+
+.social-midias h3 {
+	padding-bottom: 2rem;
+}
+
+.social-img {
+	width: 100px;
+}
+
+.get-in-touch, .social-midias {
+	padding: 2rem;
+	border: 2px solid #33C1FF;
+	border-radius: 10px;
+	box-shadow: 15px 15px 5px 1px gray;
+	height: 100%;
+}
+
+.contact h2 {
+	letter-spacing: .2rem;
+}
+
+.get-in-touch-title, .get-in-touch-description {
+	padding-bottom: 2rem;
+}
+
+.form-itens input, .form-itens textarea {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #33C1FF;
+	padding: 1rem 1rem;
+}
+
+.form-itens textarea {
+	min-height: 100px;
+}
+
+.form-itens:nth-child(1), .form-itens:nth-child(2) {
+	margin-bottom: 2rem;
 }
