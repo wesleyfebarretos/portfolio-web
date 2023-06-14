@@ -1,5 +1,65 @@
 .nav-bar {
 	display: flex;
+	background: rgba(51, 193, 255);
+	flex-direction: column;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	width: 100%;
+	position: fixed;
+	height: fit-content;
+	z-index: 99;
+	overflow: auto;
+}
+
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	letter-spacing: .4rem;
+	color: white;
+	align-items: center;
+}
+	
+	
+.logo-name, .logo-description {
+	font-family: 'Inconsolata', monospace;
+}
+
+.logo-name {
+	font-size: 1.6rem;
+	font-weight: 700;
+	margin-bottom: .2rem;
+}
+
+.logo-description {
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.nav-items-container {
+	display: flex;
+	padding: 2rem 0 1rem;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.nav-items {
+	font-size: 1.2rem;
+}
+
+.link-nav {
+	color: white;
+	opacity: .8;
+	padding: .4rem .8rem	;
+	border: 1px solid white;
+	border-radius: .5rem;
+}
+
+
+/*DESKTOP*/
+
+/* .nav-bar {
+	display: flex;
 	justify-content: space-between;
 	padding-top: 3rem;
 	padding-bottom: 3rem;
@@ -50,4 +110,4 @@
 	border: 1px solid #33C1FF;
 	border-radius: .5rem;
 }
-
+ */

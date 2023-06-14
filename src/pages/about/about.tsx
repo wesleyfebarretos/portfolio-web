@@ -48,18 +48,18 @@ export function AboutPage() {
               <h2>Follow Me On Social Media</h2>
               <ul className="social-midias-img-container">
                 <li>
-                  <a href="">
+                  <a href="#">
                     <img className="social-img" src={instagramIcon} alt="" />
                   </a>
                 </li>
                 <li>
-                  <a href="">
+                  <a href="#">
                     <img className="social-img" src={linkedinIcon} alt="" />
                   </a>
                 </li>
               </ul>
               <h3>Visit My GitHub</h3>
-              <a href="">
+              <a href="#">
                 <img className="social-img" src={gitHubIcon} alt="" />
               </a>
             </div>

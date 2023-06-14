@@ -8,11 +8,11 @@
 }
 
 .container {
-	padding-left: 12rem;
-	padding-right: 12rem;
+	padding-left: 8%;
+	padding-right: 8%;
 }
 
-.fadeInLeft {
+/* .fadeInLeft {
 	-webkit-animation: fadeInLeft 1.2s both;
 	-moz-animation: fadeInLeft 1.2s both;
 	-o-animation: fadeInLeft 1.2s both;
@@ -106,4 +106,4 @@
 		opacity: 1;
 		transform: translateX(0);
 	}
-}
+} */

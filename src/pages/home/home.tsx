@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
 import { NavigationBarComponent } from '../../components/navigationBar/navigationBarComponent';
-import gitImg from '../../images/GitHub-Mark.png';
-import dexImg from '../../images/dex.jpg';
-import cafeImg from '../../images/photo-1604964432806-254d07c11f32.png';
+import pokedexImg from '../../images/Dex-print.png';
+import github from '../../images/GitHub-Mark.png';
+import backendImg from '../../images/back-end.png';
+import dexApp from '../../images/dex-app.png';
+import deployImg from '../../images/icons8-deploy.gif';
+import introductionImg from '../../images/introduction-img.png';
 import cypressIcon from '../../images/skill-icons/cypress.svg';
 import cssIcon from '../../images/skill-icons/icons8-css3.svg';
 import dockerIcon from '../../images/skill-icons/icons8-docker.svg';
@@ -43,11 +46,16 @@ export function HomePage() {
       img: '0.6',
       data: '1',
     },
-    cafe: {
+    dexApp: {
+      img: '0',
+      data: '0',
+    },
+    backendApp: {
       img: '0',
       data: '0',
     },
   });
+  const [scrollableNavHeight, setScrollablenavHeight] = useState<number>();
 
   const { ref: projectRef, inView: projectInView } = useInView();
   const { ref: skillRef, inView: skillInView } = useInView();
@@ -93,10 +101,38 @@ export function HomePage() {
     setProjectHeight(`${project!.clientHeight}px`);
   }
 
+  function calcScrollableNavHeight() {
+    return setTimeout(() => {
+      const result = document.querySelector('.nav-bar');
+      setScrollablenavHeight(result!.clientHeight);
+    }, 100);
+  }
+  calcScrollableNavHeight();
+
   return (
     <>
       <header className="header-home">
         <NavigationBarComponent />
+
+        <section
+          className="introduction container"
+          style={{ marginTop: scrollableNavHeight }}
+        >
+          <div className="introduction-content">
+            <h1 className="introduction-title">
+              Full Stack Developer with a passion for Back-end, building robust
+              and scalable solutions
+            </h1>
+            <img src={introductionImg} alt="" className="introduction-img" />
+            <p className="introduction-description">
+              If you are looking for a Full Stack developer passionate about
+              back-end, committed to delivering exceptional results and focused
+              on providing the best user experience, I am ready to take on new
+              challenges and collaborate on innovative projects
+            </p>
+          </div>
+        </section>
+
         <div className="container learn-more-header">
           <div
             className="learn-more-text-container"
@@ -129,7 +165,7 @@ export function HomePage() {
               style={{ height: projectHeight }}
             >
               <img
-                src={dexImg}
+                src={pokedexImg}
                 alt=""
                 className="img-dex"
                 style={{ opacity: projectOpacity.pokedex.img }}
@@ -138,8 +174,20 @@ export function HomePage() {
                 className="project-data"
                 style={{ opacity: projectOpacity.pokedex.data }}
               >
-                <p className="name">Pokedex</p>
-                <img className="perfil-image" src={gitImg} alt="" />
+                <p className="name">Deploy Pokedex</p>
+                <figcaption className="images-container">
+                  <img
+                    className="perfil-image"
+                    src={github}
+                    alt="github-link"
+                  />
+                  <img
+                    className="perfil-image"
+                    src={deployImg}
+                    alt="deploy-link"
+                  />
+                </figcaption>
+
                 <p className="description">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
                   eius eveniet qui unde dicta voluptatibus consequatur magnam ex
@@ -149,19 +197,40 @@ export function HomePage() {
               </div>
 
               <img
-                src={cafeImg}
+                src={dexApp}
                 alt=""
                 className="img-dex"
-                style={{ opacity: projectOpacity.cafe.img }}
+                style={{ opacity: projectOpacity.dexApp.img }}
               />
               <div
                 className="project-data"
-                style={{ opacity: projectOpacity.cafe.data }}
+                style={{ opacity: projectOpacity.dexApp.data }}
               >
-                <p className="name">café</p>
-                <img className="perfil-image" src={gitImg} alt="" />
+                <p className="name">Pokedex App</p>
+                <img className="perfil-image" src={github} alt="" />
                 <p className="description">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                </p>
+              </div>
+
+              <img
+                src={backendImg}
+                alt=""
+                className="img-dex"
+                style={{ opacity: projectOpacity.backendApp.data }}
+              />
+
+              <div
+                className="project-data"
+                style={{ opacity: projectOpacity.backendApp.data }}
+              >
+                <p className="name">API Pokedex</p>
+                <img src={github} alt="" className="perfil-image" />
+                <p className="description">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                  quod, sapiente rem odio quia voluptas aliquid dolorem vero,
+                  repellendus ut culpa ad nulla libero sunt possimus magnam
+                  dolore voluptatum hic.
                 </p>
               </div>
             </div>
@@ -197,7 +266,11 @@ export function HomePage() {
                       data: '1',
                       img: '.6',
                     },
-                    cafe: {
+                    dexApp: {
+                      data: '0',
+                      img: '0',
+                    },
+                    backendApp: {
                       data: '0',
                       img: '0',
                     },
@@ -215,9 +288,13 @@ export function HomePage() {
                       data: '0',
                       img: '0',
                     },
-                    cafe: {
+                    dexApp: {
                       data: '1',
                       img: '.6',
+                    },
+                    backendApp: {
+                      data: '0',
+                      img: '0',
                     },
                   }));
                 }}
@@ -228,6 +305,20 @@ export function HomePage() {
                 style={{ background: radioBackground.radio3 }}
                 onClick={() => {
                   changeRadioBackground(3);
+                  setProjectOpacity(() => ({
+                    pokedex: {
+                      data: '0',
+                      img: '0',
+                    },
+                    dexApp: {
+                      data: '0',
+                      img: '0',
+                    },
+                    backendApp: {
+                      data: '1',
+                      img: '.6',
+                    },
+                  }));
                 }}
               />
             </div>
