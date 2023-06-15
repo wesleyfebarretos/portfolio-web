@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
 import { NavigationBarComponent } from '../../components/navigationBar/navigationBarComponent';
@@ -41,9 +41,9 @@ export function HomePage() {
 
   const [display, setDisplay] = useState('none');
   const [projectHeight, setProjectHeight] = useState('auto');
-  const [projectOpacity, setProjectOpacity] = useState({
+  const [projectConfigs, setProjectConfigs] = useState({
     pokedex: {
-      img: '0.6',
+      img: '.6',
       data: '1',
     },
     dexApp: {
@@ -55,13 +55,40 @@ export function HomePage() {
       data: '0',
     },
   });
+
+  const [projectDisplay, setProjectDisplay] = useState({
+    DisplayProject1: '',
+    DisplayProject2: '',
+    DisplayProject3: '',
+  });
+
+  const [labelLock, setLabelLock] = useState<boolean>(false);
+
   const [scrollableNavHeight, setScrollablenavHeight] = useState<number>();
 
-  const { ref: projectRef, inView: projectInView } = useInView();
-  const { ref: skillRef, inView: skillInView } = useInView();
-  const { ref: skillRef2, inView: skillInView2 } = useInView();
-  const { ref: skillRef3, inView: skillInView3 } = useInView();
-  const { ref: skillRef4, inView: skillInView4 } = useInView();
+  const { ref: projectRef, inView: projectInView } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: skillRef, inView: skillInView } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: skillRef2, inView: skillInView2 } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: skillRef3, inView: skillInView3 } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: skillRef4, inView: skillInView4 } = useInView({
+    triggerOnce: true,
+  });
+
+  function resetProjectDisplay() {
+    setProjectDisplay({
+      DisplayProject1: '',
+      DisplayProject2: '',
+      DisplayProject3: '',
+    });
+  }
 
   function changeRadioBackground(index: number) {
     if (index === 2) {
@@ -97,8 +124,19 @@ export function HomePage() {
   }
 
   function calcProjectHeight() {
-    const project = document.querySelector('.project .project-data');
-    setProjectHeight(`${project!.clientHeight}px`);
+    const projects = document.querySelectorAll('.project .project-data');
+
+    let maxHeight = 0;
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < projects.length; i++) {
+      const value = projects[i].clientHeight;
+
+      if (value && value > maxHeight) {
+        maxHeight = value;
+      }
+    }
+    setProjectHeight(`${maxHeight}px`);
   }
 
   function calcScrollableNavHeight() {
@@ -108,6 +146,29 @@ export function HomePage() {
     }, 100);
   }
   calcScrollableNavHeight();
+
+  function changeOpacityNavBarOnScroll() {
+    let timer: any;
+
+    window.addEventListener('scroll', () => {
+      const navBar = document.querySelector('.nav-bar');
+      const scrollPosition = document.documentElement.scrollTop;
+      clearTimeout(timer);
+      if (scrollPosition > 0) {
+        navBar?.classList.add('nav-bar-opac');
+      } else {
+        navBar?.classList.remove('nav-bar-opac');
+      }
+
+      timer = setTimeout(() => {
+        navBar?.classList.remove('nav-bar-opac');
+      }, 300);
+    });
+  }
+
+  useEffect(() => {
+    changeOpacityNavBarOnScroll();
+  });
 
   return (
     <>
@@ -119,10 +180,39 @@ export function HomePage() {
           style={{ marginTop: scrollableNavHeight }}
         >
           <div className="introduction-content">
-            <h1 className="introduction-title">
-              Full Stack Developer with a passion for Back-end, building robust
-              and scalable solutions
-            </h1>
+            <div className="introduction-content-to-desktop">
+              <h1 className="introduction-title">
+                Full Stack Developer with a passion for Back-end, building
+                robust and scalable solutions
+              </h1>
+              <p className="introduction-description-to-desktop">
+                If you are looking for a Full Stack developer passionate about
+                back-end, committed to delivering exceptional results and
+                focused on providing the best user experience, I am ready to
+                take on new challenges and collaborate on innovative projects
+              </p>
+              <div
+                className="learn-more-text-container-desktop"
+                role="button"
+                tabIndex={0}
+                onKeyDown={() => {}}
+                onClick={() => {
+                  resetProjectDisplay();
+                  changeDisplay();
+                  setTimeout(() => {
+                    calcProjectHeight();
+                    learnMoreScrolling();
+                  }, 10);
+                }}
+              >
+                <p className="learn-more-text-desktop">
+                  Learn more about my work
+                </p>
+                <span className="material-symbols-rounded learn-more-expand-desktop">
+                  expand_more
+                </span>
+              </div>
+            </div>
             <img src={introductionImg} alt="" className="introduction-img" />
             <p className="introduction-description">
               If you are looking for a Full Stack developer passionate about
@@ -140,10 +230,11 @@ export function HomePage() {
             tabIndex={0}
             onKeyDown={() => {}}
             onClick={() => {
+              resetProjectDisplay();
               changeDisplay();
               setTimeout(() => {
-                learnMoreScrolling();
                 calcProjectHeight();
+                learnMoreScrolling();
               }, 10);
             }}
           >
@@ -168,46 +259,69 @@ export function HomePage() {
                 src={pokedexImg}
                 alt=""
                 className="img-dex"
-                style={{ opacity: projectOpacity.pokedex.img }}
+                style={{
+                  opacity: projectConfigs.pokedex.img,
+                  display: projectDisplay.DisplayProject1,
+                }}
               />
               <div
                 className="project-data"
-                style={{ opacity: projectOpacity.pokedex.data }}
+                style={{
+                  opacity: projectConfigs.pokedex.data,
+                  display: projectDisplay.DisplayProject1,
+                }}
               >
+                <img
+                  src={pokedexImg}
+                  alt=""
+                  className="project-image-desktop"
+                />
                 <p className="name">Deploy Pokedex</p>
                 <figcaption className="images-container">
-                  <img
-                    className="perfil-image"
-                    src={github}
-                    alt="github-link"
-                  />
-                  <img
-                    className="perfil-image"
-                    src={deployImg}
-                    alt="deploy-link"
-                  />
+                  <a href="#" className="images-link">
+                    <img
+                      className="perfil-image"
+                      src={github}
+                      alt="github-link"
+                    />
+                  </a>
+                  <a href="#" className="images-link">
+                    <img
+                      className="perfil-image"
+                      src={deployImg}
+                      alt="deploy-link"
+                    />
+                  </a>
                 </figcaption>
 
                 <p className="description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
-                  eius eveniet qui unde dicta voluptatibus consequatur magnam ex
-                  modi consectetur praesentium, voluptatum voluptatem ipsa
-                  aspernatur. Consequatur fugit totam doloremque nihil.
+                  Se quiser confeirr mais clique aqui para saber mais e tudo
+                  amis si
                 </p>
               </div>
 
               <img
                 src={dexApp}
-                alt=""
+                alt="imagem of an pokedex"
                 className="img-dex"
-                style={{ opacity: projectOpacity.dexApp.img }}
+                style={{
+                  opacity: projectConfigs.dexApp.img,
+                  display: projectDisplay.DisplayProject2,
+                }}
               />
+
               <div
                 className="project-data"
-                style={{ opacity: projectOpacity.dexApp.data }}
+                style={{
+                  opacity: projectConfigs.dexApp.data,
+                  display: projectDisplay.DisplayProject2,
+                }}
               >
+                <img src={dexApp} alt="" className="project-image-desktop" />
                 <p className="name">Pokedex App</p>
-                <img className="perfil-image" src={github} alt="" />
+                <a href="#">
+                  <img className="perfil-image" src={github} alt="" />
+                </a>
                 <p className="description">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 </p>
@@ -215,17 +329,31 @@ export function HomePage() {
 
               <img
                 src={backendImg}
-                alt=""
+                alt="imagem of an pokedex"
                 className="img-dex"
-                style={{ opacity: projectOpacity.backendApp.data }}
+                style={{
+                  opacity: projectConfigs.backendApp.img,
+                  display: projectDisplay.DisplayProject3,
+                }}
               />
 
               <div
                 className="project-data"
-                style={{ opacity: projectOpacity.backendApp.data }}
+                style={{
+                  opacity: projectConfigs.backendApp.data,
+                  display: projectDisplay.DisplayProject3,
+                }}
               >
+                <img
+                  src={backendImg}
+                  alt="imagem of an api"
+                  className="project-image-desktop"
+                />
                 <p className="name">API Pokedex</p>
-                <img src={github} alt="" className="perfil-image" />
+                <a href="#">
+                  <img src={github} alt="" className="perfil-image" />
+                </a>
+
                 <p className="description">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
                   quod, sapiente rem odio quia voluptas aliquid dolorem vero,
@@ -260,21 +388,37 @@ export function HomePage() {
                 className="radio-label"
                 style={{ background: radioBackground.radio1 }}
                 onClick={() => {
-                  changeRadioBackground(1);
-                  setProjectOpacity(() => ({
-                    pokedex: {
-                      data: '1',
-                      img: '.6',
-                    },
-                    dexApp: {
-                      data: '0',
-                      img: '0',
-                    },
-                    backendApp: {
-                      data: '0',
-                      img: '0',
-                    },
-                  }));
+                  if (!labelLock) {
+                    setLabelLock(true);
+                    changeRadioBackground(1);
+                    setProjectDisplay((state) => ({
+                      DisplayProject1: '',
+                      DisplayProject2: state.DisplayProject2,
+                      DisplayProject3: state.DisplayProject3,
+                    }));
+                    setProjectConfigs(() => ({
+                      pokedex: {
+                        data: '1',
+                        img: '.6',
+                      },
+                      dexApp: {
+                        data: '0',
+                        img: '0',
+                      },
+                      backendApp: {
+                        data: '0',
+                        img: '0',
+                      },
+                    }));
+                    setTimeout(() => {
+                      setProjectDisplay((state) => ({
+                        DisplayProject1: state.DisplayProject1,
+                        DisplayProject2: 'none',
+                        DisplayProject3: 'none',
+                      }));
+                      setLabelLock(false);
+                    }, 500);
+                  }
                 }}
               />
               <label
@@ -282,21 +426,37 @@ export function HomePage() {
                 className="radio-label"
                 style={{ background: radioBackground.radio2 }}
                 onClick={() => {
-                  changeRadioBackground(2);
-                  setProjectOpacity(() => ({
-                    pokedex: {
-                      data: '0',
-                      img: '0',
-                    },
-                    dexApp: {
-                      data: '1',
-                      img: '.6',
-                    },
-                    backendApp: {
-                      data: '0',
-                      img: '0',
-                    },
-                  }));
+                  if (!labelLock) {
+                    setLabelLock(true);
+                    changeRadioBackground(2);
+                    setProjectDisplay((state) => ({
+                      DisplayProject1: state.DisplayProject1,
+                      DisplayProject2: '',
+                      DisplayProject3: state.DisplayProject3,
+                    }));
+                    setProjectConfigs(() => ({
+                      pokedex: {
+                        data: '0',
+                        img: '0',
+                      },
+                      dexApp: {
+                        data: '1',
+                        img: '.6',
+                      },
+                      backendApp: {
+                        data: '0',
+                        img: '0',
+                      },
+                    }));
+                    setTimeout(() => {
+                      setProjectDisplay((state) => ({
+                        DisplayProject1: 'none',
+                        DisplayProject2: state.DisplayProject2,
+                        DisplayProject3: 'none',
+                      }));
+                      setLabelLock(false);
+                    }, 500);
+                  }
                 }}
               />
               <label
@@ -304,21 +464,37 @@ export function HomePage() {
                 className="radio-label"
                 style={{ background: radioBackground.radio3 }}
                 onClick={() => {
-                  changeRadioBackground(3);
-                  setProjectOpacity(() => ({
-                    pokedex: {
-                      data: '0',
-                      img: '0',
-                    },
-                    dexApp: {
-                      data: '0',
-                      img: '0',
-                    },
-                    backendApp: {
-                      data: '1',
-                      img: '.6',
-                    },
-                  }));
+                  if (!labelLock) {
+                    setLabelLock(true);
+                    changeRadioBackground(3);
+                    setProjectDisplay((state) => ({
+                      DisplayProject1: state.DisplayProject1,
+                      DisplayProject2: state.DisplayProject2,
+                      DisplayProject3: '',
+                    }));
+                    setProjectConfigs(() => ({
+                      pokedex: {
+                        data: '0',
+                        img: '0',
+                      },
+                      dexApp: {
+                        data: '0',
+                        img: '0',
+                      },
+                      backendApp: {
+                        data: '1',
+                        img: '.6',
+                      },
+                    }));
+                    setTimeout(() => {
+                      setProjectDisplay((state) => ({
+                        DisplayProject1: 'none',
+                        DisplayProject2: 'none',
+                        DisplayProject3: state.DisplayProject3,
+                      }));
+                      setLabelLock(false);
+                    }, 500);
+                  }
                 }}
               />
             </div>

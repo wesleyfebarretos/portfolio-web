@@ -5,7 +5,7 @@ footer {
 .footer-container {
 	display: flex;
 	flex-direction: column;
-	padding: 3rem 0 2rem;
+	padding: 2rem 0 2rem;
 }
 
 .contact-title {
@@ -26,7 +26,10 @@ footer .contact-button {
 	border-radius: .5rem;
 	border: 1px solid #33C1FF;
 	background: #33C1FF;
-	padding: .5rem 2rem;
+	padding: .5rem 0rem;
+	display: block;
+	text-align: center;
+	width: 100%;
 	font-weight: 500;
 	font-size: 1.4rem;
 	text-transform: uppercase;
@@ -34,44 +37,41 @@ footer .contact-button {
 	text-decoration: none;
 	color: white;
 	opacity: 0.8;
-	margin-left: 5rem;
+	max-width: 400px;
 }
 
 footer .links-midia {
 	display: flex;
-	padding-top: 3rem;
+	padding-top: 1rem;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 }
 
 footer .links-container {
 	display: flex;
-	flex-direction: column;
-	gap: 3rem;
-	width: 50%;
-	align-items: flex-end;
+	gap: 2rem;
+	border-bottom: 1px solid rgba(51, 193, 255, .5);
+	padding: 1rem 1rem;
+	width: 100%;
 	justify-content: center;
-	border-right: 1px solid rgba(51, 193, 255, .5);
-	padding: 1rem 0;
 }
 
 .links-container .link {
 	text-transform: uppercase;
 	color: white;
 	opacity: 0.6;
-	margin-right: 2rem;
 }
 
 footer .social-midia {
 	display: flex;
-	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
-	width: 25%;
-	padding: 1rem 0;
+	padding-top: 1rem;
 }
 
 .social-midia img {
 	width: 50px;
-	margin-left: 2rem;
 }
 
 .first-img {
@@ -79,10 +79,10 @@ footer .social-midia {
 }
 
 footer .footer-logo-container {
-	width: 25%;
-	text-transform: capitalize;
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 2rem;
+	text-transform: capitalize;
 }
 
 footer .footer-logo {
@@ -98,13 +98,15 @@ footer .footer-logo {
 }
 
 footer .footer-logo-name {
-	font-size: 1.8rem;
+	font-size: 1.4rem;
 	font-family: 'Inconsolata', monospace;
+	font-weight: 700;
 }
 
 footer .footer-logo-description {
-	font-size: 1rem;
+	font-size: .9rem;
 	font-family: 'Inconsolata', monospace;
+	font-weight: 700;	
 }
 
 footer .copyright {
@@ -113,4 +115,23 @@ footer .copyright {
 	text-align: center;
 	padding-top: 2rem;
 	margin: 0 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+	footer .footer-logo-name {
+		font-size: 1.6rem;
+	}
+
+	footer .footer-logo-description {
+		font-size: 1rem;
+	}
+
+	footer .copyright {
+		display: flex;
+		justify-content: center;
+	}
+
+	footer .contact-button {
+		margin: 0 auto;
+	}
 }
