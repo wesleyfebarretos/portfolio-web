@@ -45,6 +45,16 @@
 	cursor: pointer;
 	max-width: 400px;
 	margin: 0 auto;
+	transition: .2s;
+}
+
+.learn-more-text-container-desktop:active {
+	background: rgba(51, 193, 255, .8);
+	box-shadow: 0 0 10px 10px rgba(51, 193, 255, .5);
+}
+
+.learn-more-text-container:active {
+	background: rgba(51, 193, 255, .2);
 }
 
 .learn-more-text {
@@ -61,6 +71,7 @@
 
 .learn-more-text-container-desktop {
 	display: none;
+	transition: .2s;
 }
 
  /*  section projects - MAIN */
@@ -367,6 +378,10 @@
 
 	.skill-card {
 		width: 22%;
+	}
+
+	.learn-more-text-container-desktop:hover	 {
+		background: rgba(51, 193, 255, .8);
 	}
 }
 

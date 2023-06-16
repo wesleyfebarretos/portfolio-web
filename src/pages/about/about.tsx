@@ -1,4 +1,7 @@
-import { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import emailjs from '@emailjs/browser';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
 import { NavigationBarComponent } from '../../components/navigationBar/navigationBarComponent';
@@ -14,6 +17,11 @@ export function AboutPage() {
   });
   const { ref: contactRef, inView: contactInview } = useInView({
     triggerOnce: true,
+  });
+  const [emailConfigs, setEmailConfigs] = useState({
+    name: '',
+    email: '',
+    message: '',
   });
 
   function changeOpacityNavBarOnScroll() {
@@ -31,6 +39,59 @@ export function AboutPage() {
         navBar?.classList.remove('nav-bar-opac');
       }, 300);
     });
+  }
+
+  function treatFormErrors() {
+    const treatErrorsArray: Array<keyof typeof emailConfigs> = [
+      'message',
+      'name',
+      'email',
+    ];
+    const spanError = document.querySelector('.span-error') as HTMLSpanElement;
+
+    treatErrorsArray.forEach((error) => {
+      if (emailConfigs[error] === '') {
+        spanError!.style.color = 'red';
+        spanError!.style.display = 'block';
+        spanError!.innerHTML = `fill in the ${error} field`;
+      }
+    });
+
+    if (
+      emailConfigs.email !== '' &&
+      emailConfigs.message !== '' &&
+      emailConfigs.name !== ''
+    ) {
+      const MailTemplate = {
+        from_name: emailConfigs.name,
+        email: emailConfigs.email,
+        message: emailConfigs.message,
+      };
+
+      emailjs
+        .send(
+          'service_u58eo4p',
+          'template_p3lijd1',
+          MailTemplate,
+          'tL9r4hnYoRsbJ_VE_'
+        )
+        .then(
+          () => {
+            spanError!.style.color = 'lightgreen';
+            spanError!.innerHTML = `Email sent successfully`;
+            spanError!.style.display = 'block';
+            setEmailConfigs({ email: '', message: '', name: '' });
+            setTimeout(() => {
+              spanError!.style.display = 'none';
+            }, 10 * 1000);
+          },
+          (error) => {
+            spanError!.style.color = 'red';
+            spanError!.innerHTML = error.message;
+            spanError!.style.display = 'block';
+          }
+        );
+    }
   }
 
   useEffect(() => {
@@ -117,29 +178,70 @@ export function AboutPage() {
                 quaerat dolore dolor mollitia reprehenderit minima ipsa! Beatae
                 laudantium dolorem esse dolorum.
               </p>
-              <form action="">
+              <form
+                action=""
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  treatFormErrors();
+                }}
+              >
                 <div className="form-itens">
                   <label htmlFor="input-email" />
-                  <input type="email" placeholder="Email" />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={(e) =>
+                      setEmailConfigs((state) => ({
+                        email: e.target.value,
+                        name: state.name,
+                        message: state.message,
+                      }))
+                    }
+                    value={emailConfigs.email}
+                  />
                 </div>
                 <div className="form-itens">
                   <label htmlFor="input-name" />
-                  <input type="text" placeholder="Name" />
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    onChange={(e) =>
+                      setEmailConfigs((state) => ({
+                        email: state.email,
+                        name: e.target.value,
+                        message: state.message,
+                      }))
+                    }
+                    value={emailConfigs.name}
+                  />
                 </div>
                 <div className="form-itens">
                   <label htmlFor="text-area" />
-                  <textarea name="" id="text-area" placeholder="Message" />
+                  <textarea
+                    name=""
+                    id="text-area"
+                    placeholder="Message"
+                    onChange={(e) =>
+                      setEmailConfigs((state) => ({
+                        email: state.email,
+                        name: state.name,
+                        message: e.target.value,
+                      }))
+                    }
+                    value={emailConfigs.message}
+                  />
                 </div>
-                <button
-                  type="submit"
-                  className="form-send-button"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    console.log('enviou');
-                  }}
-                >
+                <button type="submit" className="form-send-button">
                   send
                 </button>
+                <span
+                  className="span-error"
+                  style={{
+                    textAlign: 'center',
+                    display: 'none',
+                    paddingTop: '1rem',
+                  }}
+                />
               </form>
             </div>
           </div>

@@ -151,6 +151,10 @@
 	height: 150px;
 }
 
+.get-in-touch {
+	position: relative;
+}
+
 .form-send-button {
 	border-radius: 10px;
 	padding: 1rem 0 1rem 1rem;
@@ -161,6 +165,12 @@
 	text-transform: capitalize;
 	text-align: center;
 	cursor: pointer;
+	transition: .2s;
+}
+
+.form-send-button:active {
+	background: rgba(51, 193, 255, .8);
+	box-shadow: 0 0 10px 10px rgba(51, 193, 255, .5);
 }
 
 
@@ -190,6 +200,7 @@
 		text-align: center;
 	}
 }
+
 
 @media screen and (min-width: 1024px) {
 	.about-container {
@@ -225,5 +236,9 @@
 
 	.social-midias {
 		margin: 0 auto;
+	}
+
+	.form-send-button:hover {
+		background: rgba(51, 193, 255, .8);;
 	}
 }
