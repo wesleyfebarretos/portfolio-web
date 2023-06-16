@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
@@ -63,8 +64,6 @@ export function HomePage() {
   });
 
   const [labelLock, setLabelLock] = useState<boolean>(false);
-
-  const [scrollableNavHeight, setScrollablenavHeight] = useState<number>();
 
   const { ref: projectRef, inView: projectInView } = useInView({
     triggerOnce: true,
@@ -139,14 +138,6 @@ export function HomePage() {
     setProjectHeight(`${maxHeight}px`);
   }
 
-  function calcScrollableNavHeight() {
-    return setTimeout(() => {
-      const result = document.querySelector('.nav-bar');
-      setScrollablenavHeight(result!.clientHeight);
-    }, 100);
-  }
-  calcScrollableNavHeight();
-
   function changeOpacityNavBarOnScroll() {
     let timer: any;
 
@@ -156,8 +147,6 @@ export function HomePage() {
       clearTimeout(timer);
       if (scrollPosition > 0) {
         navBar?.classList.add('nav-bar-opac');
-      } else {
-        navBar?.classList.remove('nav-bar-opac');
       }
 
       timer = setTimeout(() => {
@@ -175,10 +164,7 @@ export function HomePage() {
       <header className="header-home">
         <NavigationBarComponent />
 
-        <section
-          className="introduction container"
-          style={{ marginTop: scrollableNavHeight }}
-        >
+        <section className="introduction container">
           <div className="introduction-content">
             <div className="introduction-content-to-desktop">
               <h1 className="introduction-title">
@@ -195,7 +181,6 @@ export function HomePage() {
                 className="learn-more-text-container-desktop"
                 role="button"
                 tabIndex={0}
-                onKeyDown={() => {}}
                 onClick={() => {
                   resetProjectDisplay();
                   changeDisplay();
@@ -228,7 +213,6 @@ export function HomePage() {
             className="learn-more-text-container"
             role="button"
             tabIndex={0}
-            onKeyDown={() => {}}
             onClick={() => {
               resetProjectDisplay();
               changeDisplay();
@@ -278,7 +262,12 @@ export function HomePage() {
                 />
                 <p className="name">Deploy Pokedex</p>
                 <figcaption className="images-container">
-                  <a href="#" className="images-link">
+                  <a
+                    href="https://github.com/Wesleyfbarretos"
+                    target="_blank"
+                    className="images-link"
+                    rel="noreferrer"
+                  >
                     <img
                       className="perfil-image"
                       src={github}
@@ -319,7 +308,11 @@ export function HomePage() {
               >
                 <img src={dexApp} alt="" className="project-image-desktop" />
                 <p className="name">Pokedex App</p>
-                <a href="#">
+                <a
+                  href="https://github.com/Wesleyfbarretos"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <img className="perfil-image" src={github} alt="" />
                 </a>
                 <p className="description">
@@ -350,7 +343,11 @@ export function HomePage() {
                   className="project-image-desktop"
                 />
                 <p className="name">API Pokedex</p>
-                <a href="#">
+                <a
+                  href="https://github.com/Wesleyfbarretos"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <img src={github} alt="" className="perfil-image" />
                 </a>
 

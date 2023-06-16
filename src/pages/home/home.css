@@ -4,6 +4,10 @@
 	flex-direction: column;
 }
 
+.introduction {
+	margin-top: 145px;
+}
+
 .introduction-content {
 	display: flex;
 	flex-direction: column;
@@ -207,6 +211,7 @@
 	align-items: center;
 	box-shadow: -2px 2px 5px 1px #33c1ff;
 	width: 100%;
+	max-width: 200px;
 }
 
 .skill-name {
@@ -264,7 +269,7 @@
 	}
 
 	.introduction-description-to-desktop {
-		padding: 0 10rem;
+		padding: 0 2rem;
 		text-align: center;
 		font-weight: 500;
 		opacity: .8;
@@ -322,6 +327,7 @@
 		display: flex !important;
 		box-shadow: 15px 15px 20px 1px gray;
 		max-width: 500px;
+		width: 500px;
 		border-radius: 10px;
 		height: 400px;
 	}
@@ -353,5 +359,19 @@
 		border-radius: 10px;
 		height: 100%;
 		opacity: .6;
+	}
+
+	.skills-list {
+		flex-wrap: nowrap;
+	}
+
+	.skill-card {
+		width: 22%;
+	}
+}
+
+@media screen and (min-width: 1250px) {
+	.introduction-description-to-desktop {
+		padding: 0 10rem;
 	}
 }

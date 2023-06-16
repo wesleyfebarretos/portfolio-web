@@ -1,32 +1,67 @@
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
 import { NavigationBarComponent } from '../../components/navigationBar/navigationBarComponent';
 import gitHubIcon from '../../images/icons8-github.svg';
-import instagramIcon from '../../images/icons8-instagram.svg';
 import linkedinIcon from '../../images/icons8-linkedin.svg';
+import introducingMeImg from '../../images/introducingMe.png';
 import perfilImg from '../../images/perfil.jpg';
 import './about.css';
 
 export function AboutPage() {
-  const { ref: socialRef, inView: socialInView } = useInView();
-  const { ref: contactRef, inView: contactInview } = useInView();
+  const { ref: socialRef, inView: socialInView } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: contactRef, inView: contactInview } = useInView({
+    triggerOnce: true,
+  });
+
+  function changeOpacityNavBarOnScroll() {
+    let timer: any;
+
+    window.addEventListener('scroll', () => {
+      const navBar = document.querySelector('.nav-bar');
+      const scrollPosition = document.documentElement.scrollTop;
+      clearTimeout(timer);
+      if (scrollPosition > 0) {
+        navBar?.classList.add('nav-bar-opac');
+      }
+
+      timer = setTimeout(() => {
+        navBar?.classList.remove('nav-bar-opac');
+      }, 300);
+    });
+  }
+
+  useEffect(() => {
+    changeOpacityNavBarOnScroll();
+  });
 
   return (
     <>
-      <header>
+      <header className="about-header">
         <NavigationBarComponent />
+        <section className="introducing-me container fadeInRight">
+          <div className="introducing-me-container">
+            <h1 className="introducing-me-title">
+              Time to introduce myself a little!
+            </h1>
+            <img src={introducingMeImg} alt="" className="introducing-me-img" />
+            <p className="introducing-me-description">Lets go!</p>
+          </div>
+        </section>
       </header>
 
       <main className="about-main">
         <section className="container about-container fadeInLeft">
-          <div className="about-img">
-            <img src={perfilImg} alt="" />
+          <div className="about-img-container">
+            <img src={perfilImg} alt="" className="about-img" />
           </div>
 
           <div className="about-description">
-            <h1>
+            <h3>
               I&apos;m Wesley, a Software Developer based in Rio de Janeiro.
-            </h1>
+            </h3>
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga
               voluptate exercitationem dolor eius rerum cupiditate magni, libero
@@ -45,22 +80,25 @@ export function AboutPage() {
               className={`social-midias ${socialInView ? 'fadeInLeft' : ''}`}
               ref={socialRef}
             >
-              <h2>Follow Me On Social Media</h2>
+              <h4>Follow Me On Social Media</h4>
               <ul className="social-midias-img-container">
                 <li>
-                  <a href="#">
-                    <img className="social-img" src={instagramIcon} alt="" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
+                  <a
+                    href="https://www.linkedin.com/in/wesleyfebarretos/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <img className="social-img" src={linkedinIcon} alt="" />
                   </a>
                 </li>
               </ul>
-              <h3>Visit My GitHub</h3>
-              <a href="#">
-                <img className="social-img" src={gitHubIcon} alt="" />
+              <h4>Visit My GitHub</h4>
+              <a
+                href="https://github.com/Wesleyfbarretos"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img className="social-img git-img" src={gitHubIcon} alt="" />
               </a>
             </div>
           </div>
@@ -72,7 +110,7 @@ export function AboutPage() {
             ref={contactRef}
           >
             <div className="get-in-touch">
-              <h2 className="get-in-touch-title">Get in Touch</h2>
+              <h4 className="get-in-touch-title">Get in Touch</h4>
               <p className="get-in-touch-description">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
                 magnam aspernatur obcaecati, velit culpa animi iure magni beatae
@@ -82,7 +120,7 @@ export function AboutPage() {
               <form action="">
                 <div className="form-itens">
                   <label htmlFor="input-email" />
-                  <input type="text" placeholder="Email" />
+                  <input type="email" placeholder="Email" />
                 </div>
                 <div className="form-itens">
                   <label htmlFor="input-name" />
@@ -92,14 +130,24 @@ export function AboutPage() {
                   <label htmlFor="text-area" />
                   <textarea name="" id="text-area" placeholder="Message" />
                 </div>
+                <button
+                  type="submit"
+                  className="form-send-button"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    console.log('enviou');
+                  }}
+                >
+                  send
+                </button>
               </form>
             </div>
           </div>
         </section>
       </main>
 
-      <footer>
-        <FooterComponent />
+      <footer className="container">
+        <FooterComponent exclude />
       </footer>
     </>
   );

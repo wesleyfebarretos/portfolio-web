@@ -1,93 +1,229 @@
+.about-header {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.introducing-me {
+	margin-top: 145px;
+}
+
+.introducing-me-title {
+	margin-top: 2rem;
+	font-size: 1.6rem;
+	text-align: center;
+	margin-bottom: 2rem;
+	text-transform: capitalize;
+}
+
+.introducing-me-img {
+	width: 100%;
+  max-width: 350px;
+	border-radius: 50%;
+}
+
+.introducing-me-description {
+	font-weight: 500;
+	opacity: .6;
+	text-align: center;
+	margin: 2rem 0 3rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid rgba(51, 193, 255, .5);
+}
+
 .about-main {
 	padding-top: 4rem;
-	padding-bottom: 4rem;
+	display: flex;
+	flex-direction: column;
 }
 
-.about-container {
-	padding-top: 4rem;
-	padding-bottom: 4rem;
-}
-
-.about-img img {
-	border-radius: 50%;
-	min-width: 180px;
-	max-width: 180px;
-	border: 2px solid #33C1FF;
-
-}
-
-.about-description {
-	width: 50%;
-	margin-left: 15%;
-}
-
-.about-description h1 {
+.about-img-container {
+	width: 100%;
 	margin-bottom: 2rem;
 }
 
-.contact {
-	display: flex;
-	padding-top: 4rem;
+.about-img {
+	border-radius: 50%;
+	width: 100%;
+	max-width: 200px;
+	border: 2px solid #33c1ff;
+	display: block;
+	margin: 0 auto;
+}
+
+.about-description {
 	padding-bottom: 4rem;
 }
 
-.social-midias-container, .get-in-touch-container {
-	padding: 0 6rem;
-	width: 50%;
+.about-description h3 {
+	font-size: 1.2rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+}
+
+.about-description p {
+	font-size: 1rem;
+}
+
+.contact  {
+	padding-top: 4rem;
+	overflow: hidden;
+}
+
+.social-midias-container {
+	padding-bottom: 4rem;
 }
 
 .social-midias {
-	display: flex;
-	text-align: center;
-	flex-direction: column;
+	border-radius: 10px;
+	border: 1px solid #33c1ff;
+	box-shadow: 15px 15px 20px 1px gray;
+	padding: 1rem;
+	max-width: 400px;
+}
+
+.social-midias h4 {
+	padding-bottom: 2rem;
+	text-align: left;
 }
 
 .social-midias-img-container {
 	display: flex;
-	margin: 4rem 0;
+	padding-bottom: 2rem;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.social-midias-img-container li {
+	width: 100%;
+	display: flex;
 	justify-content: center;
-	gap: 4rem;
-}
-
-.social-midias h2 {
-	padding-bottom: 2rem;
-}
-
-.social-midias h3 {
-	padding-bottom: 2rem;
 }
 
 .social-img {
-	width: 100px;
-}
-
-.get-in-touch, .social-midias {
-	padding: 2rem;
-	border: 2px solid #33C1FF;
-	border-radius: 10px;
-	box-shadow: 15px 15px 5px 1px gray;
-	height: 100%;
-}
-
-.contact h2 {
-	letter-spacing: .2rem;
-}
-
-.get-in-touch-title, .get-in-touch-description {
-	padding-bottom: 2rem;
-}
-
-.form-itens input, .form-itens textarea {
 	width: 100%;
-	border-radius: 5px;
-	border: 1px solid #33C1FF;
-	padding: 1rem 1rem;
+	max-width: 80px;
+}
+
+.git-img {
+	display: block;
+	margin: 0 auto;
+}
+
+.get-in-touch-container {
+	padding: 4rem 0;
+}
+
+.get-in-touch {
+	border-radius: 10px;
+  border: 1px solid #33c1ff;
+  box-shadow: 15px 15px 20px 1px gray;
+  padding: 1rem;
+	max-width: 400px;
+}
+
+.get-in-touch-title {
+	margin-bottom: 2rem;
+	font-weight: 700;
+}
+
+.get-in-touch-description {
+	margin-bottom: 2rem;
+	opacity: .6;
+}
+
+.form-itens {
+	margin-bottom: 1rem;
+}
+
+.form-itens input {
+	border-radius: 10px;
+	border: 1px solid #33c1ff;
+	padding: 1rem 0 1rem 1rem;
+	width: 100%;
 }
 
 .form-itens textarea {
-	min-height: 100px;
+	border-radius: 10px;
+	border: 1px solid #33c1ff;
+	padding: 1rem 0 1rem 1rem;
+	width: 100%;
+	height: 150px;
 }
 
-.form-itens:nth-child(1), .form-itens:nth-child(2) {
-	margin-bottom: 2rem;
+.form-send-button {
+	border-radius: 10px;
+	padding: 1rem 0 1rem 1rem;
+	width: 100%;
+	background-color: #33c1ff;
+	border: none;
+	color: white;
+	text-transform: capitalize;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+@media screen and (min-width: 768px) {
+	.introducing-me-img {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.about-description h3 {
+		text-align: center;
+	}
+
+	.about-description p {
+		text-align: center;
+		opacity: .6;
+		font-weight: 500;
+	}
+
+	.contact {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.social-midias h4  {
+		text-align: center;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.about-container {
+		display: flex;
+		padding-bottom: 4rem;
+	}
+
+	.about-img {
+		min-width: 200px;
+	}
+
+	.about-description {
+		padding-left: 2rem;
+	}
+
+	.contact {
+		flex-direction: row;
+		align-items: initial;
+		padding-bottom: 8rem;
+	}
+
+	.social-midias-container, .get-in-touch-container {
+		width: 50%;
+	}
+
+	.get-in-touch-container {
+		padding: 0;
+	}
+
+	.get-in-touch {
+		margin: 0 auto;
+	}
+
+	.social-midias {
+		margin: 0 auto;
+	}
 }
