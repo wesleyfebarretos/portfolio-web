@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import emailjs from '@emailjs/browser';
@@ -41,19 +42,34 @@ export function AboutPage() {
     });
   }
 
+  function addEventOnFormInputs() {
+    setTimeout(() => {
+      const fieldsToListener = document.querySelectorAll('.listener-class');
+      const spanErrors = document.querySelectorAll('.span-error');
+
+      for (let i = 0; i < fieldsToListener.length; i++) {
+        const field = fieldsToListener[i];
+        field.addEventListener('blur', () => {
+          const span = spanErrors[i] as HTMLSpanElement;
+          span.style.display = 'none';
+        });
+      }
+    }, 200);
+  }
+
   function treatFormErrors() {
     const treatErrorsArray: Array<keyof typeof emailConfigs> = [
       'message',
       'name',
       'email',
     ];
-    const spanError = document.querySelector('.span-error') as HTMLSpanElement;
 
     treatErrorsArray.forEach((error) => {
+      const spanError = document.querySelector(
+        `.span-${error}`
+      ) as HTMLSpanElement;
       if (emailConfigs[error] === '') {
-        spanError!.style.color = 'red';
         spanError!.style.display = 'block';
-        spanError!.innerHTML = `fill in the ${error} field`;
       }
     });
 
@@ -67,6 +83,9 @@ export function AboutPage() {
         email: emailConfigs.email,
         message: emailConfigs.message,
       };
+      const sentEmailSpan = document.querySelector(
+        '.span-send-email'
+      ) as HTMLSpanElement;
 
       emailjs
         .send(
@@ -77,18 +96,16 @@ export function AboutPage() {
         )
         .then(
           () => {
-            spanError!.style.color = 'lightgreen';
-            spanError!.innerHTML = `Email sent successfully`;
-            spanError!.style.display = 'block';
+            sentEmailSpan!.style.display = 'block';
             setEmailConfigs({ email: '', message: '', name: '' });
             setTimeout(() => {
-              spanError!.style.display = 'none';
+              sentEmailSpan!.style.display = 'none';
             }, 10 * 1000);
           },
           (error) => {
-            spanError!.style.color = 'red';
-            spanError!.innerHTML = error.message;
-            spanError!.style.display = 'block';
+            sentEmailSpan!.style.color = 'red';
+            sentEmailSpan!.innerHTML = error.message;
+            sentEmailSpan!.style.display = 'block';
           }
         );
     }
@@ -96,6 +113,7 @@ export function AboutPage() {
 
   useEffect(() => {
     changeOpacityNavBarOnScroll();
+    addEventOnFormInputs();
   });
 
   return (
@@ -188,6 +206,7 @@ export function AboutPage() {
                 <div className="form-itens">
                   <label htmlFor="input-email" />
                   <input
+                    className="listener-class"
                     type="email"
                     placeholder="Email"
                     onChange={(e) =>
@@ -199,10 +218,14 @@ export function AboutPage() {
                     }
                     value={emailConfigs.email}
                   />
+                  <span className="span-error span-email">
+                    Fill in the email field
+                  </span>
                 </div>
                 <div className="form-itens">
                   <label htmlFor="input-name" />
                   <input
+                    className="listener-class"
                     type="text"
                     placeholder="Name"
                     onChange={(e) =>
@@ -214,10 +237,14 @@ export function AboutPage() {
                     }
                     value={emailConfigs.name}
                   />
+                  <span className="span-error span-name">
+                    Fill in the name field{' '}
+                  </span>
                 </div>
                 <div className="form-itens">
                   <label htmlFor="text-area" />
                   <textarea
+                    className="listener-class"
                     name=""
                     id="text-area"
                     placeholder="Message"
@@ -230,18 +257,14 @@ export function AboutPage() {
                     }
                     value={emailConfigs.message}
                   />
+                  <span className="span-error span-message">
+                    Fill in the message field
+                  </span>
                 </div>
                 <button type="submit" className="form-send-button">
                   send
                 </button>
-                <span
-                  className="span-error"
-                  style={{
-                    textAlign: 'center',
-                    display: 'none',
-                    paddingTop: '1rem',
-                  }}
-                />
+                <span className="span-send-email">Email sent successfully</span>
               </form>
             </div>
           </div>

@@ -155,6 +155,19 @@
 	position: relative;
 }
 
+.span-error {
+	color: red;
+	font-size: .9rem;
+	display: none;
+}
+
+.span-send-email {
+	color: lightgreen;
+	text-align: center;
+	padding-top: 1rem;
+	display: none;
+}
+
 .form-send-button {
 	border-radius: 10px;
 	padding: 1rem 0 1rem 1rem;
