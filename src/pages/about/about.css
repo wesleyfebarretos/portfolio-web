@@ -1,3 +1,5 @@
+
+
 .about-header {
 	display: flex;
 	flex-direction: column;
@@ -5,7 +7,7 @@
 }
 
 .introducing-me {
-	margin-top: 145px;
+	margin-top: 202px;
 }
 
 .introducing-me-title {
@@ -14,12 +16,25 @@
 	text-align: center;
 	margin-bottom: 2rem;
 	text-transform: capitalize;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
+}
+
+.introducing-me-img-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	height: 350px;
+	width: 100%;
 }
 
 .introducing-me-img {
 	width: 100%;
   max-width: 350px;
 	border-radius: 50%;
+	position: absolute;
+	transition: opacity .5s ease-in-out;
 }
 
 .introducing-me-description {
@@ -29,6 +44,8 @@
 	margin: 2rem 0 3rem;
 	padding-bottom: 1rem;
 	border-bottom: 2px solid rgba(51, 193, 255, .5);
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .about-main {
@@ -53,6 +70,8 @@
 
 .about-description {
 	padding-bottom: 4rem;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .about-description h3 {
@@ -80,11 +99,14 @@
 	box-shadow: 15px 15px 20px 1px gray;
 	padding: 1rem;
 	max-width: 400px;
+	background: var(--bg-card);
 }
 
 .social-midias h4 {
 	padding-bottom: 2rem;
 	text-align: left;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .social-midias-img-container {
@@ -120,16 +142,21 @@
   box-shadow: 15px 15px 20px 1px gray;
   padding: 1rem;
 	max-width: 400px;
+	background: var(--bg-card);
 }
 
 .get-in-touch-title {
 	margin-bottom: 2rem;
 	font-weight: 700;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .get-in-touch-description {
 	margin-bottom: 2rem;
 	opacity: .6;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .form-itens {
@@ -188,6 +215,14 @@
 
 
 @media screen and (min-width: 768px) {
+	.introducing-me {
+    margin-top: 112px;
+	}
+	
+	.introducing-me-title {
+		margin-top: 4rem;
+	}
+
 	.introducing-me-img {
 		display: block;
 		margin: 0 auto;
@@ -212,6 +247,7 @@
 	.social-midias h4  {
 		text-align: center;
 	}
+	
 }
 
 

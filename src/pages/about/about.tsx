@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
 import { NavigationBarComponent } from '../../components/navigationBar/navigationBarComponent';
+import darkIntroducingMeImg from '../../images/bedtime.png';
 import gitHubIcon from '../../images/icons8-github.svg';
 import linkedinIcon from '../../images/icons8-linkedin.svg';
 import introducingMeImg from '../../images/introducingMe.png';
@@ -24,6 +25,25 @@ export function AboutPage() {
     email: '',
     message: '',
   });
+
+  const [introducingMeImgOpacity, setIntroducingMeImgOpacity] = useState({
+    dark: 0,
+    normal: 1,
+  });
+
+  function updateOpacityOfAboutIntroImage(condition: boolean) {
+    if (condition) {
+      return setIntroducingMeImgOpacity({
+        dark: 1,
+        normal: 0,
+      });
+    }
+
+    return setIntroducingMeImgOpacity({
+      dark: 0,
+      normal: 1,
+    });
+  }
 
   function changeOpacityNavBarOnScroll() {
     let timer: any;
@@ -119,13 +139,30 @@ export function AboutPage() {
   return (
     <>
       <header className="about-header">
-        <NavigationBarComponent />
+        <NavigationBarComponent
+          // eslint-disable-next-line react/jsx-no-bind
+          updateOpacityOfAboutIntroImage={updateOpacityOfAboutIntroImage}
+        />
         <section className="introducing-me container fadeInRight">
           <div className="introducing-me-container">
             <h1 className="introducing-me-title">
               Time to introduce myself a little!
             </h1>
-            <img src={introducingMeImg} alt="" className="introducing-me-img" />
+            <div className="introducing-me-img-container">
+              <img
+                src={darkIntroducingMeImg}
+                alt=""
+                className="introducing-me-img dark-introducing-me-img"
+                style={{ opacity: introducingMeImgOpacity.dark }}
+              />
+              <img
+                src={introducingMeImg}
+                alt=""
+                className="introducing-me-img"
+                style={{ opacity: introducingMeImgOpacity.normal }}
+              />
+            </div>
+
             <p className="introducing-me-description">Lets go!</p>
           </div>
         </section>

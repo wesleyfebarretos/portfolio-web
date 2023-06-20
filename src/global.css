@@ -7,6 +7,18 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
+:root {
+	transition: background .5s linear;
+	--text-color: initial;
+	--transition-dark-mode: all .5s linear;
+}
+
+.dark-mode:root {
+	background: #000019;
+	--text-color: #FFF;
+	--bg-card: linear-gradient(45deg, transparent, #33c1ff);
+}
+
 .container {
 	padding-left: 8%;
 	padding-right: 8%;

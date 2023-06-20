@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -6,6 +7,7 @@ import { NavigationBarComponent } from '../../components/navigationBar/navigatio
 import pokedexImg from '../../images/Dex-print.png';
 import github from '../../images/GitHub-Mark.png';
 import backendImg from '../../images/back-end.png';
+import darkIntroductionImg from '../../images/dark-introduction-img.png';
 import dexApp from '../../images/dex-app.png';
 import deployImg from '../../images/icons8-deploy.gif';
 import introductionImg from '../../images/introduction-img.png';
@@ -62,6 +64,10 @@ export function HomePage() {
     DisplayProject2: '',
     DisplayProject3: '',
   });
+  const [introductionImgOpacity, setIntroductionImgOpacity] = useState({
+    dark: 0,
+    normal: 1,
+  });
 
   const [labelLock, setLabelLock] = useState<boolean>(false);
 
@@ -86,6 +92,20 @@ export function HomePage() {
       DisplayProject1: '',
       DisplayProject2: '',
       DisplayProject3: '',
+    });
+  }
+
+  function updateOpacityOfIntroImage(condition: boolean): void {
+    if (condition) {
+      return setIntroductionImgOpacity({
+        dark: 1,
+        normal: 0,
+      });
+    }
+
+    return setIntroductionImgOpacity({
+      dark: 0,
+      normal: 1,
     });
   }
 
@@ -162,7 +182,9 @@ export function HomePage() {
   return (
     <>
       <header className="header-home">
-        <NavigationBarComponent />
+        <NavigationBarComponent
+          updateOpacityOfIntroImage={updateOpacityOfIntroImage}
+        />
 
         <section className="introduction container">
           <div className="introduction-content">
@@ -198,7 +220,21 @@ export function HomePage() {
                 </span>
               </div>
             </div>
-            <img src={introductionImg} alt="" className="introduction-img" />
+            <div className="introduction-img-container">
+              <img
+                src={darkIntroductionImg}
+                alt=""
+                className="introduction-img dark-introduction-img"
+                style={{ opacity: introductionImgOpacity.dark }}
+              />
+              <img
+                src={introductionImg}
+                alt=""
+                className="introduction-img"
+                style={{ opacity: introductionImgOpacity.normal }}
+              />
+            </div>
+
             <p className="introduction-description">
               If you are looking for a Full Stack developer passionate about
               back-end, committed to delivering exceptional results and focused

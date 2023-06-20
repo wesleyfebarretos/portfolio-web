@@ -1,11 +1,15 @@
+.dark-mode:root {
+	--bg-card: linear-gradient(45deg, transparent, #33c1ff);
+}
+
 .header-home {
-	height: 100vh;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
 .introduction {
-	margin-top: 145px;
+	margin-top: 202px;
 }
 
 .introduction-content {
@@ -18,12 +22,26 @@
 	margin-top: 2rem;
 	font-size: 1.4rem;
 	text-align: left;
+	transition: var(--transition-dark-mode);
+	color: var(--text-color);
+}
+
+.introduction-img-container {
+	height: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	margin: 2rem 0;
 }
 
 .introduction-img {
 	width: 100%;
-	margin: 2rem 0;
 	max-width: 350px;
+	position: absolute;
+	transition: opacity .5s ease-in-out;
+
 }
 
 .introduction-description {
@@ -31,6 +49,8 @@
 	font-weight: 500;
 	font-size: 1rem;
 	opacity: .8;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);	
 }
 
 .learn-more-header {
@@ -59,6 +79,8 @@
 
 .learn-more-text {
 	opacity: 0.6;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .learn-more-expand {
@@ -67,6 +89,8 @@
 
 .introduction-description-to-desktop {
 	display: none;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .learn-more-text-container-desktop {
@@ -127,6 +151,8 @@
 	margin-bottom: 4rem;
 	font-weight: 700;
 	font-size: 2rem;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .projects .name {
@@ -135,6 +161,8 @@
 	font-weight: 500;
 	font-size: 1.2rem;
 	text-transform: capitalize;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .images-container {
@@ -162,6 +190,8 @@
 	font-family: 'Inconsolata', monospace;
 	font-weight: 500;
 	font-size: 1rem;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .input-container {
@@ -195,6 +225,8 @@
 	font-weight: 700;
 	padding-top: 4rem;
 	padding-bottom: 4rem;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .skills-list {
@@ -223,12 +255,15 @@
 	box-shadow: -2px 2px 5px 1px #33c1ff;
 	width: 100%;
 	max-width: 200px;
+	background: var(--bg-card);
 }
 
 .skill-name {
 	font-weight: 500;
 	text-transform: uppercase;
 	margin-bottom: 2rem;
+	color: var(--text-color);
+	transition: var(--transition-dark-mode);
 }
 
 .skill-img {
@@ -242,9 +277,15 @@
 }
 
 @media screen and (min-width: 768px) {
+	.introduction {
+    margin-top: 112px;
+	}
+
 	.introduction-title {
+		margin-top: 4rem;
 		text-align: center;
 	}
+
 
 	.introduction-description {
 		text-align: center;
@@ -264,7 +305,6 @@
 	.introduction-description {
 		display: none;
 	}
-
 	.introduction-description-to-desktop {
 		display: block;
 	}
@@ -370,6 +410,7 @@
 		border-radius: 10px;
 		height: 100%;
 		opacity: .6;
+		width: 500px;
 	}
 
 	.skills-list {
