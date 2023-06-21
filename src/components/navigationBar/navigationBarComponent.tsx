@@ -19,12 +19,12 @@ export function NavigationBarComponent({
       <ul className="nav-items-container">
         <li className="nav-items">
           <a href="/" className="link-nav">
-            home
+            início
           </a>
         </li>
         <li className="nav-items">
           <a href="/about" className="link-nav">
-            about
+            sobre
           </a>
         </li>
       </ul>

@@ -33,26 +33,26 @@ export function FooterComponent({ exclude }: Iexclude) {
           target="_blank"
           rel="noreferrer"
         >
-          contact me
+          Entre em contato
         </a>
       </div>
       <div className="links-midia">
         <ul className="links-container">
           <li>
             <a href="/" className="link">
-              home
+              início
             </a>
           </li>
           <li>
             <a href="/about" className="link">
-              about
+              sobre
             </a>
           </li>
           <li
             onClick={() => learnMoreScrolling()}
             style={{ cursor: 'pointer', display: exclude ? 'none' : '' }}
           >
-            <div className="link">projects</div>
+            <div className="link">projetos</div>
           </li>
         </ul>
         <div className="social-midia">

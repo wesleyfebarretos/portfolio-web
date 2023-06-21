@@ -190,14 +190,15 @@ export function HomePage() {
           <div className="introduction-content">
             <div className="introduction-content-to-desktop">
               <h1 className="introduction-title">
-                Full Stack Developer with a passion for Back-end, building
-                robust and scalable solutions
+                Desenvolvedor Full Stack com uma paixão por Back-end,
+                construindo aplicações robustas e escaláveis
               </h1>
               <p className="introduction-description-to-desktop">
-                If you are looking for a Full Stack developer passionate about
-                back-end, committed to delivering exceptional results and
-                focused on providing the best user experience, I am ready to
-                take on new challenges and collaborate on innovative projects
+                Se está á procura de um Desenvolvedor Full Stack apaixonado por
+                back-end, empenhado em apresentar resultados excepcionais e
+                focado em proporcionar a melhor experiência ao usuário, estou
+                pronto para assumir novos desafios e colaborar em projetos
+                inovadores
               </p>
               <div
                 className="learn-more-text-container-desktop"
@@ -212,9 +213,7 @@ export function HomePage() {
                   }, 10);
                 }}
               >
-                <p className="learn-more-text-desktop">
-                  Learn more about my work
-                </p>
+                <p className="learn-more-text-desktop">Conheça meu trabalho</p>
                 <span className="material-symbols-rounded learn-more-expand-desktop">
                   expand_more
                 </span>
@@ -236,10 +235,10 @@ export function HomePage() {
             </div>
 
             <p className="introduction-description">
-              If you are looking for a Full Stack developer passionate about
-              back-end, committed to delivering exceptional results and focused
-              on providing the best user experience, I am ready to take on new
-              challenges and collaborate on innovative projects
+              Se está á procura de um Desenvolvedor Full Stack apaixonado por
+              back-end, empenhado em apresentar resultados excepcionais e focado
+              em proporcionar a melhor experiência ao usuário, estou pronto para
+              assumir novos desafios e colaborar em projetos inovadores
             </p>
           </div>
         </section>
@@ -258,7 +257,7 @@ export function HomePage() {
               }, 10);
             }}
           >
-            <p className="learn-more-text">Learn more about my work</p>
+            <p className="learn-more-text">Conheça meu trabalho</p>
             <span className="material-symbols-rounded learn-more-expand">
               expand_more
             </span>
@@ -269,7 +268,7 @@ export function HomePage() {
       <main style={{ display }}>
         <section className="container projects">
           <div className="projects-container">
-            <h1 className="title">Projects</h1>
+            <h1 className="title">Projetos</h1>
             <div
               ref={projectRef}
               className={`project  ${projectInView ? 'fadeInLeft' : ''}`}
@@ -299,7 +298,7 @@ export function HomePage() {
                 <p className="name">Deploy Pokedex</p>
                 <figcaption className="images-container">
                   <a
-                    href="https://github.com/Wesleyfbarretos"
+                    href="https://github.com/Wesleyfbarretos/Pokedex"
                     target="_blank"
                     className="images-link"
                     rel="noreferrer"
@@ -310,7 +309,12 @@ export function HomePage() {
                       alt="github-link"
                     />
                   </a>
-                  <a href="#" className="images-link">
+                  <a
+                    href="https://wfpokedex.vercel.app"
+                    className="images-link"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <img
                       className="perfil-image"
                       src={deployImg}
@@ -320,8 +324,9 @@ export function HomePage() {
                 </figcaption>
 
                 <p className="description">
-                  Se quiser confeirr mais clique aqui para saber mais e tudo
-                  amis si
+                  Um deploy de uma simples pokedex, para mostrar um pouco do
+                  front-end da minha aplicação full stack mostrada nos projetos
+                  seguintes, o intuito é ser somente uma ideia breve.
                 </p>
               </div>
 
@@ -345,14 +350,17 @@ export function HomePage() {
                 <img src={dexApp} alt="" className="project-image-desktop" />
                 <p className="name">Pokedex App</p>
                 <a
-                  href="https://github.com/Wesleyfbarretos"
+                  href="https://github.com/Wesleyfbarretos/Pokedex-app"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <img className="perfil-image" src={github} alt="" />
                 </a>
                 <p className="description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Esse é o front-end da minha aplicação, que consome dados da
+                  minha API listada aqui, visite o repositório para encontrar
+                  uma documentação mais explicada sobre o app e também como
+                  iniciar localmente.
                 </p>
               </div>
 
@@ -380,7 +388,7 @@ export function HomePage() {
                 />
                 <p className="name">API Pokedex</p>
                 <a
-                  href="https://github.com/Wesleyfbarretos"
+                  href="https://github.com/Wesleyfbarretos/backend-DEX"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -388,10 +396,9 @@ export function HomePage() {
                 </a>
 
                 <p className="description">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                  quod, sapiente rem odio quia voluptas aliquid dolorem vero,
-                  repellendus ut culpa ad nulla libero sunt possimus magnam
-                  dolore voluptatum hic.
+                  Esse é o back-end do meu projeto que está sendo consumido pelo
+                  front-end listado aqui, visite o repositório para mais
+                  explicações sobre end-points e como iniciar ele localmente.
                 </p>
               </div>
             </div>
@@ -536,7 +543,7 @@ export function HomePage() {
 
         <section className="container skills">
           <div className="skills-inside-container">
-            <h2 className="skills-title">Skills</h2>
+            <h2 className="skills-title">Habilidades</h2>
             <div className="skills-container">
               <ul
                 ref={skillRef}
