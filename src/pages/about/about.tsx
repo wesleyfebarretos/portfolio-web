@@ -10,7 +10,7 @@ import darkIntroducingMeImg from '../../images/bedtime.png';
 import gitHubIcon from '../../images/icons8-github.svg';
 import linkedinIcon from '../../images/icons8-linkedin.svg';
 import introducingMeImg from '../../images/introducingMe.png';
-import perfilImg from '../../images/perfil.jpg';
+import perfilImg from '../../images/perfil200.png';
 import './about.css';
 
 export function AboutPage() {
@@ -146,7 +146,7 @@ export function AboutPage() {
         <section className="introducing-me container fadeInRight">
           <div className="introducing-me-container">
             <h1 className="introducing-me-title">
-              Time to introduce myself a little!
+              Hora de me apresentar um pouco!
             </h1>
             <div className="introducing-me-img-container">
               <img
@@ -163,7 +163,7 @@ export function AboutPage() {
               />
             </div>
 
-            <p className="introducing-me-description">Lets go!</p>
+            <p className="introducing-me-description">Vamos lá!</p>
           </div>
         </section>
       </header>
@@ -176,16 +176,22 @@ export function AboutPage() {
 
           <div className="about-description">
             <h3>
-              I&apos;m Wesley, a Software Developer based in Rio de Janeiro.
+              Me chamo Wesley, um desenvolvedor de software do Rio de Janeiro.
             </h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga
-              voluptate exercitationem dolor eius rerum cupiditate magni, libero
-              placeat nisi vero veritatis id natus nihil odio at repellendus
-              tempore asperiores enim?Lorem ipsum dolor sit, amet consectetur
-              adipisicing elit. Nostrum nihil tempore, minima nulla doloribus
-              inventore illum suscipit ex eum nobis reiciendis eos beatae porro
-              placeat corrupti expedita molestias! Vero, autem.
+              Olá! Meu nome é <strong>Wesley Ferreira</strong> e sou um
+              desenvolvedor de software apaixonado pela criação de soluções
+              inovadoras. Com 24 anos de idade, sou natural do Rio de Janeiro,
+              onde mergulhei no mundo da tecnologia há cerca de 2 anos. Minha
+              jornada como desenvolvedor começou nesse espaço de tempo, quando
+              descobri minha paixão pela programação. Desde então, tenho buscado
+              constantemente aprimorar minhas habilidades e conhecimentos na
+              área. Minha motivação vem da oportunidade de transformar ideias em
+              realidade por meio do código. Ao longo do tempo, desenvolvi
+              projetos pessoais, deixei alguns deles disponíveis na página
+              principal. Construi esse portifólio web para transmitir minha
+              experiência, habilidades e projetos anteriores de forma eficaz aos
+              recrutadores e potenciais clientes.
             </p>
           </div>
         </section>
@@ -196,7 +202,7 @@ export function AboutPage() {
               className={`social-midias ${socialInView ? 'fadeInLeft' : ''}`}
               ref={socialRef}
             >
-              <h4>Follow Me On Social Media</h4>
+              <h4>Deem uma olhada no meu Linkedin !</h4>
               <ul className="social-midias-img-container">
                 <li>
                   <a
@@ -208,7 +214,7 @@ export function AboutPage() {
                   </a>
                 </li>
               </ul>
-              <h4>Visit My GitHub</h4>
+              <h4>Visitem meu GitHub !</h4>
               <a
                 href="https://github.com/Wesleyfbarretos"
                 target="_blank"
@@ -226,12 +232,11 @@ export function AboutPage() {
             ref={contactRef}
           >
             <div className="get-in-touch">
-              <h4 className="get-in-touch-title">Get in Touch</h4>
+              <h4 className="get-in-touch-title">Entre em Contato</h4>
               <p className="get-in-touch-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
-                magnam aspernatur obcaecati, velit culpa animi iure magni beatae
-                quaerat dolore dolor mollitia reprehenderit minima ipsa! Beatae
-                laudantium dolorem esse dolorum.
+                Está aqui um campo reservado para que você possa entrar em
+                contato direto pelo email, basta informar o remetente do email,
+                nome e sua mensagem, para que eu possa retornar.
               </p>
               <form
                 action=""
@@ -245,7 +250,7 @@ export function AboutPage() {
                   <input
                     className="listener-class"
                     type="email"
-                    placeholder="Email"
+                    placeholder="Digite seu Email..."
                     onChange={(e) =>
                       setEmailConfigs((state) => ({
                         email: e.target.value,
@@ -256,7 +261,7 @@ export function AboutPage() {
                     value={emailConfigs.email}
                   />
                   <span className="span-error span-email">
-                    Fill in the email field
+                    Preencha o campo de email
                   </span>
                 </div>
                 <div className="form-itens">
@@ -264,7 +269,7 @@ export function AboutPage() {
                   <input
                     className="listener-class"
                     type="text"
-                    placeholder="Name"
+                    placeholder="Digite seu nome..."
                     onChange={(e) =>
                       setEmailConfigs((state) => ({
                         email: state.email,
@@ -275,7 +280,7 @@ export function AboutPage() {
                     value={emailConfigs.name}
                   />
                   <span className="span-error span-name">
-                    Fill in the name field{' '}
+                    Preencha o campo de nome
                   </span>
                 </div>
                 <div className="form-itens">
@@ -284,7 +289,7 @@ export function AboutPage() {
                     className="listener-class"
                     name=""
                     id="text-area"
-                    placeholder="Message"
+                    placeholder="Escreva sua mensagem..."
                     onChange={(e) =>
                       setEmailConfigs((state) => ({
                         email: state.email,
@@ -295,13 +300,15 @@ export function AboutPage() {
                     value={emailConfigs.message}
                   />
                   <span className="span-error span-message">
-                    Fill in the message field
+                    Preencha o campo de mensagem
                   </span>
                 </div>
                 <button type="submit" className="form-send-button">
-                  send
+                  enviar
                 </button>
-                <span className="span-send-email">Email sent successfully</span>
+                <span className="span-send-email">
+                  Email enviado com sucesso !
+                </span>
               </form>
             </div>
           </div>

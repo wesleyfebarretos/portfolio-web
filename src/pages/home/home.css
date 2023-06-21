@@ -99,10 +99,10 @@
 
 /*  section projects - MAIN */
 
-.projects {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
+	.projects {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
 
 .projects-container {
   display: flex;
@@ -113,6 +113,7 @@
 }
 
 .project {
+	height: 460px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -183,14 +184,27 @@
   cursor: pointer;
 }
 
-.description {
-  text-align: center;
-  padding: 4rem 2rem;
-  font-family: 'Inconsolata', monospace;
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--text-color);
-  transition: var(--transition-dark-mode);
+.technologies {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	flex-wrap: wrap;
+	padding: 2rem 10px;
+}
+
+.tech-items {
+	border-radius: 50%;
+	background-color: rgba(0,0,0,.4);
+	padding: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tech-img {
+	width: 30px;
+	height: 30px;
 }
 
 .input-container {
@@ -293,6 +307,15 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
+
+	.technologies {
+		padding: 2rem 0;
+	}
+
+	.tech-img {
+		width: 40px;
+		height: 40px;
+	}
 }
 
 @media screen and (min-width: 1024px) {
@@ -378,7 +401,7 @@
     max-width: 500px;
     width: 500px;
     border-radius: 10px;
-    height: 400px;
+    height: 410px;
   }
 
   .img-dex {
@@ -391,10 +414,6 @@
     font-size: 1.4rem;
   }
 
-  .project-data .description {
-    padding: 2rem 2rem;
-    font-size: 1.2rem;
-  }
 
   .perfil-image {
     max-width: 80px;

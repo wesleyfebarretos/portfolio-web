@@ -43,7 +43,6 @@ export function HomePage() {
   });
 
   const [display, setDisplay] = useState('none');
-  const [projectHeight, setProjectHeight] = useState('auto');
   const [projectConfigs, setProjectConfigs] = useState({
     pokedex: {
       img: '.6',
@@ -142,22 +141,6 @@ export function HomePage() {
     setDisplay('block');
   }
 
-  function calcProjectHeight() {
-    const projects = document.querySelectorAll('.project .project-data');
-
-    let maxHeight = 0;
-
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < projects.length; i++) {
-      const value = projects[i].clientHeight;
-
-      if (value && value > maxHeight) {
-        maxHeight = value;
-      }
-    }
-    setProjectHeight(`${maxHeight}px`);
-  }
-
   function changeOpacityNavBarOnScroll() {
     let timer: any;
 
@@ -208,7 +191,6 @@ export function HomePage() {
                   resetProjectDisplay();
                   changeDisplay();
                   setTimeout(() => {
-                    calcProjectHeight();
                     learnMoreScrolling();
                   }, 10);
                 }}
@@ -252,7 +234,6 @@ export function HomePage() {
               resetProjectDisplay();
               changeDisplay();
               setTimeout(() => {
-                calcProjectHeight();
                 learnMoreScrolling();
               }, 10);
             }}
@@ -272,7 +253,6 @@ export function HomePage() {
             <div
               ref={projectRef}
               className={`project  ${projectInView ? 'fadeInLeft' : ''}`}
-              style={{ height: projectHeight }}
             >
               <img
                 src={pokedexImg}
@@ -323,11 +303,17 @@ export function HomePage() {
                   </a>
                 </figcaption>
 
-                <p className="description">
-                  Um deploy de uma simples pokedex, para mostrar um pouco do
-                  front-end da minha aplicação full stack mostrada nos projetos
-                  seguintes, o intuito é ser somente uma ideia breve.
-                </p>
+                <ul className="technologies">
+                  <li className="tech-items">
+                    <img src={typescriptIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={nodeJsIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={reactIcon} alt="" className="tech-img" />
+                  </li>
+                </ul>
               </div>
 
               <img
@@ -356,12 +342,32 @@ export function HomePage() {
                 >
                   <img className="perfil-image" src={github} alt="" />
                 </a>
-                <p className="description">
-                  Esse é o front-end da minha aplicação, que consome dados da
-                  minha API listada aqui, visite o repositório para encontrar
-                  uma documentação mais explicada sobre o app e também como
-                  iniciar localmente.
-                </p>
+                <ul className="technologies">
+                  <li className="tech-items">
+                    <img src={typescriptIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={nodeJsIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={dockerIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={typeOrmIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={jestIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={postgreIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={reactIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={cypressIcon} alt="" className="tech-img" />
+                  </li>
+                </ul>
               </div>
 
               <img
@@ -395,11 +401,26 @@ export function HomePage() {
                   <img src={github} alt="" className="perfil-image" />
                 </a>
 
-                <p className="description">
-                  Esse é o back-end do meu projeto que está sendo consumido pelo
-                  front-end listado aqui, visite o repositório para mais
-                  explicações sobre end-points e como iniciar ele localmente.
-                </p>
+                <ul className="technologies">
+                  <li className="tech-items">
+                    <img src={typescriptIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={nodeJsIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={dockerIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={jestIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={typeOrmIcon} alt="" className="tech-img" />
+                  </li>
+                  <li className="tech-items">
+                    <img src={postgreIcon} alt="" className="tech-img" />
+                  </li>
+                </ul>
               </div>
             </div>
 
