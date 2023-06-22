@@ -45,23 +45,6 @@ export function AboutPage() {
     });
   }
 
-  function changeOpacityNavBarOnScroll() {
-    let timer: any;
-
-    window.addEventListener('scroll', () => {
-      const navBar = document.querySelector('.nav-bar');
-      const scrollPosition = document.documentElement.scrollTop;
-      clearTimeout(timer);
-      if (scrollPosition > 0) {
-        navBar?.classList.add('nav-bar-opac');
-      }
-
-      timer = setTimeout(() => {
-        navBar?.classList.remove('nav-bar-opac');
-      }, 300);
-    });
-  }
-
   function addEventOnFormInputs() {
     setTimeout(() => {
       const fieldsToListener = document.querySelectorAll('.listener-class');
@@ -132,7 +115,6 @@ export function AboutPage() {
   }
 
   useEffect(() => {
-    changeOpacityNavBarOnScroll();
     addEventOnFormInputs();
   });
 

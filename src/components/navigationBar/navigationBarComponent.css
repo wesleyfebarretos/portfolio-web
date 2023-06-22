@@ -13,9 +13,6 @@
   text-transform: capitalize;
 }
 
-.nav-bar-opac {
-  opacity: 0.5;
-}
 
 .logo {
   display: flex;

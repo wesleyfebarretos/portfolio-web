@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FooterComponent } from '../../components/footer/footerComponent';
 import { NavigationBarComponent } from '../../components/navigationBar/navigationBarComponent';
@@ -140,27 +140,6 @@ export function HomePage() {
   function changeDisplay() {
     setDisplay('block');
   }
-
-  function changeOpacityNavBarOnScroll() {
-    let timer: any;
-
-    window.addEventListener('scroll', () => {
-      const navBar = document.querySelector('.nav-bar');
-      const scrollPosition = document.documentElement.scrollTop;
-      clearTimeout(timer);
-      if (scrollPosition > 0) {
-        navBar?.classList.add('nav-bar-opac');
-      }
-
-      timer = setTimeout(() => {
-        navBar?.classList.remove('nav-bar-opac');
-      }, 300);
-    });
-  }
-
-  useEffect(() => {
-    changeOpacityNavBarOnScroll();
-  });
 
   return (
     <>
