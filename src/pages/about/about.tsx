@@ -189,7 +189,7 @@ export function AboutPage() {
               área. Minha motivação vem da oportunidade de transformar ideias em
               realidade por meio do código. Ao longo do tempo, desenvolvi
               projetos pessoais, deixei alguns deles disponíveis na página
-              principal. Construi esse portifólio web para transmitir minha
+              principal. Construi esse portfólio web para transmitir minha
               experiência, habilidades e projetos anteriores de forma eficaz aos
               recrutadores e potenciais clientes.
             </p>
