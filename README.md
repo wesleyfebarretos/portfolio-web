@@ -2,6 +2,6 @@
 
 Just a way for me to introduce myself and for you to get to know me a little better 😄.
 
-## Getting Started
+## Deploy
 
-To run this project in the development mode is very simple.
+Click [here](https://wesleyfbarretos.vercel.app) to be redirected
